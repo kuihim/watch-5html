@@ -6,13 +6,13 @@ import shutil
 
 _5html_path = '/srv/chen77477/5.html'
 _5html_name = os.path.split(_5html_path)[1]
-_dump_dir = '/srv/data-dump/5html'
-_dump_count = 20
+_dump_dir = '/srv/chen77477/data-dump/5html'
+_dump_count = 30
 
 if not os.path.exists(_5html_path):
     exit()
 
-if os.path.exists(_dump_dir):
+if not os.path.exists(_dump_dir):
     os.makedirs(_dump_dir)
 
 
@@ -31,7 +31,7 @@ def get_file_md5(file_path):
 
 def dump_5html():
     # dump file 5.html_2020-01-01 12:00:00
-    dump_name = _5html_name + '_' + datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    dump_name = _5html_name + '@' + datetime.now().strftime('%Y-%m-%d_%H:%M:%S')
     shutil.copyfile(_5html_path, os.path.join(_dump_dir, dump_name))
     files = []
     for f in os.listdir(_dump_dir):
