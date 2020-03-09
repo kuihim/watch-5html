@@ -39,7 +39,8 @@ def dump_5html():
             files.append(f)
     files = sorted(files, key=lambda f: f[-20:])
     if len(files) > _dump_count:
-        os.remove(os.path.join(_dump_dir, files[0]))
+        for f in files[0:-_dump_count]:
+            os.remove(os.path.join(_dump_dir, f))
 
 
 if __name__ == '__main__':
